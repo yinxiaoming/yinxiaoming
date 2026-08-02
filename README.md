@@ -50,6 +50,7 @@ Key Technical Highlights
     └── thing_model_example.json   # Standardized Thing Model Definition
 
 📄 License & Confidentiality
+
 Notice: This project is a generic, de-sensitized architectural reference for AIoT and RAG integration and contains no proprietary source code or confidential data from former employers.
 
 
