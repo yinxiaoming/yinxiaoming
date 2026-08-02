@@ -1,45 +1,33 @@
-# Hi there, I'm Yin Xiaoming 👋
-### Senior AIoT & AI Solutions Product Manager / FDE
+# 🤖 AIoT-LLM-RAG-SmartHome-Engine
 
-- 🔭 **Focus**: Generative AI, RAG Systems, Agentic Workflows, AIoT Ecosystems & Smart Home Solutions.
-- 🎓 **Education**: M.S. in Xiamen University (985/Double First-Class)
-- 💼 **Background**: 10+ years of experience in Midea Group, Haier Group & OGAWA.
-- 📜 **Certifications**: IPMP (International Project Management Professional) Level D.
+An enterprise-grade **GenAI & Hybrid Search RAG Architecture** integrated with **Agentic Workflows** for next-generation smart appliance interaction and diagnostic systems.
 
 ---
 
-### 🛠️ Tech Stack & Capabilities
+## 🌟 Architecture Overview
 
-- **AI & LLM**: DeepSeek, OpenAI API, Prompt Engineering, Agentic Workflows (Dify / LangChain), RAG (Hybrid Search + Rerank), Function Calling
-- **AIoT & Architecture**: Thing Model (物模型), MQTT, Protobuf, RESTful API, Microservices, Cloud-Edge Computing
-- **Product & Delivery**: System Architecture (Mermaid/Visio), PRD, Axure, Figma, PoC Delivery, AWE/IFA/CES Exhibition Support
-- **Engineering Tools**: Python, Docker, Git, Postman, Swagger
+This architecture bridges standard IoT protocols with Generative AI models (e.g., DeepSeek-V3/R1), solving traditional home automation pain points such as rigid intent recognition and complex diagnostic flows.
 
----
+```mermaid
+graph TD
+    User([User Voice / Text Input]) --> Gateway[API Gateway / Intent Router]
+    
+    subgraph AI Agent & RAG Pipeline
+        Gateway --> Router{Intent Classification}
+        Router -->|Device Control| Agent[Agentic Function Calling Engine]
+        Router -->|Diagnostic / Q&A| RAG[Hybrid Search RAG System]
+        
+        RAG --> Dense[Dense Retrieval: Vector DB]
+        RAG --> Sparse[Sparse Retrieval: BM25 Keyword]
+        Dense --> Reranker[Rerank Model: Cross-Encoder]
+        Sparse --> Reranker
+        Reranker --> LLM[DeepSeek-V3/R1 LLM]
+    end
 
-### 🚀 Featured AI & AIoT Projects
+    subgraph AIoT Execution Layer
+        Agent -->|Structured JSON| ThingModel[Thing Model Mapper]
+        ThingModel --> MQTT[MQTT / Cloud Service]
+        MQTT --> Device[Smart Home Appliances]
+    end
 
-- 🤖 **[AIoT-LLM-RAG-SmartHome-Engine](./AIoT-LLM-RAG-SmartHome-Engine)**  
-  *Enterprise-grade RAG & Multi-Modal Agent System for Smart Home Devices using DeepSeek & Hybrid Search.*
-- ⚙️ **[DevOps-Device-ThingModel-Agent](./DevOps-Device-ThingModel-Agent)**  
-  *Natural Language to Thing Model (物模型) JSON Mapping Agent powered by Structured LLM Outputs.*
-
----
-
-📬 **Contact Me**: [LinkedIn / Email / Phone]
-
-
-<!--
-**yinxiaoming/yinxiaoming** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
-
-Here are some ideas to get you started:
-
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+    LLM --> Response([Streaming Response / Action Render])
